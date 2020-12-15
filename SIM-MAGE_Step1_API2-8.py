@@ -72,10 +72,10 @@ def N_to_96(n): #Does not take inputs above 12
         raise NameError('N_to_96 input is above 12')
 
 # Add cells to each strip
-p300.distribute(50, Bacteria, storage_oligos.columns()[0:12], touch_tip = False, new_tip = 'once')
+p300.distribute(50, Bacteria, storage_oligos.columns()[0:math.ceil(oligos/8)], touch_tip = False, new_tip = 'once')
 
 # Add CRISPR plasmid to each of the PCR strip containing different oligos
-p20.transfer(50/plasmid_conc, CRISPR_plasmid, storage_oligos.columns()[0:12], touch_tip = True, new_tip = 'always', mix_after = (3, 15))
+p20.transfer(50/plasmid_conc, CRISPR_plasmid, storage_oligos.columns()[0:math.ceil(oligos/8)], touch_tip = True, new_tip = 'always', mix_after = (3, 15))
 
 # Heat shock protocol
 if electroporation == False:
