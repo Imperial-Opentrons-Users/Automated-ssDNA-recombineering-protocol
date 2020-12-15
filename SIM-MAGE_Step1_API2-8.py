@@ -82,7 +82,7 @@ if electroporation == False:
     temp_cold.set_temperature(4)
     temp_hot.set_temperature(42)
     # Adding 100mM of CaCl
-    p20.distribute(5, CaCL_1M, cold_plate.columns()[0:12], touch_tip=True, new_tip='once')
+    p20.distribute(5, CaCL_1M, cold_plate.columns()[0:math.ceil(oligos/8)], touch_tip=True, new_tip='once')
     
     # Moving to cold plate for 15 minute incubation at 4 degrees C
     for i in range(1, math.ceil(oligos/8)+1):
