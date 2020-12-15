@@ -57,8 +57,7 @@ protocol.max_speeds['Z'] = 10
 # Reagents
 # Assume that we start with a P. putida strain that has edd deleted and posseses both Cas9 and recombinase plasmids
 Bacteria = reservoir15.wells ('A1')
-Media = reservoir15.wells ('A6')
-# Multiple wells of PBS needed; though if less that 48 oligos are used, only wells A7, A9 and A10 need to be filled
+Media = reservoir15.wells ('A5', 'A6')
 PBS = reservoir15.wells ('A7', 'A8', 'A9', 'A10', 'A11', 'A12') 
 CRISPR_plasmid = tube2.wells ('A1')
 if electroporation == False:
@@ -109,9 +108,9 @@ if electroporation == False:
     p300.pick_up_tip()
     for i in range(1, math.ceil(oligos/8)+1):
         if i <= 6:
-            p300.transfer(270, PBS[0], hot_plate[N_to_96(i)], touch_tip=False, new_tip='never')
+            p300.transfer(270, Media[0], hot_plate[N_to_96(i)], touch_tip=False, new_tip='never')
         else:
-            p300.transfer(270, PBS[1], hot_plate[N_to_96(i)], touch_tip=False, new_tip='never')
+            p300.transfer(270, Media[1], hot_plate[N_to_96(i)], touch_tip=False, new_tip='never')
     p300.drop_tip()
     
     temp_hot.set_temperature(growth_temp)
